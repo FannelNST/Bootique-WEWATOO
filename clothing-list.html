@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUTIQUE WEWATOO - Liste des Vêtements</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Liste des Vêtements</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="clothing-list.html">Liste des Vêtements</a></li>
+                <li><a href="add-clothing.html">Ajouter un Vêtement</a></li>
+                <li><a href="about.html">Qui sommes-nous ?</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                &#9776;
+            </button>
+        </nav>
+    </header>
+    
+    <section>
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Nom</th>
+                    <th>Description</th>
+                    <th>Quantité</th>
+                    <th>Prix</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody id="product-list">
+                <!-- Les lignes seront générées dynamiquement avec JavaScript -->
+            </tbody>
+        </table>
+    </section>
+    <br><br><br>
+    <footer>
+        <p>&copy; 2024 BOUTIQUE WEWATOO. Tous droits réservés.</p>
+    </footer>
+    <script src="nav.js"></script>
+<!-- Ajouter ce script en bas de la page juste avant </body> -->
+<script>
+    // Récupérer les produits du Local Storage
+    const storedProducts = JSON.parse(localStorage.getItem('products')) || [];
+
+    // Utiliser les produits existants dans le tableau et ceux du Local Storage
+    const products = storedProducts.concat([
+        { name: 'T-shirt', description: 'T-shirt en coton, diverses couleurs.', quantity: 5, price: 15, image: 'images/T-shirt en coton.jpeg' },
+        { name: 'Robe d\'été', description: 'Robe légère et confortable pour l\'été.', quantity: 5, price: 30, image: 'images/Robe d\'été.jpeg' },
+        { name: 'Jean Slim', description: 'Jean slim, coupe moderne.', quantity: 5, price: 45, image: 'images/Jean Slim.jpeg' },
+        { name: 'Sweat-shirt', description: 'Sweat-shirt chaud, parfait pour l\'hiver.', quantity: 5, price: 25, image: 'images/Sweat-shirt.jpeg' },
+        { name: 'Chemise en coton', description: 'Chemise classique en coton.', quantity: 5, price: 20, image: 'images/Chemise en coton.jpeg' },
+        { name: 'Short en denim', description: 'Short en denim, idéal pour les journées chaudes.', quantity: 5, price: 18, image: 'images/Short en denim.jpeg' },
+        { name: 'Veste en cuir', description: 'Veste en cuir élégante.', quantity: 5, price: 75, image: 'images/Veste en cuir.jpeg' },
+        { name: 'Pull en laine', description: 'Pull doux en laine.', quantity: 5, price: 35, image: 'images/Pull en laine.jpeg' },
+        { name: 'Blouson bomber', description: 'Blouson bomber avec doublure.', quantity: 5, price: 40, image: 'images/Blouson bomber.jpeg' },
+        { name: 'Pantalon en toile', description: 'Pantalon en toile, confortable et résistant.', quantity: 5, price: 28, image: 'images/Pantalon en toile.jpeg' },
+        { name: 'Sandales', description: 'Sandales légères pour l\'été.', quantity: 5, price: 12, image: 'images/Sandales.jpeg' }
+    ]);
+
+    const whatsappNumber = '+243826531103';
+    const productList = document.getElementById('product-list');
+
+    products.forEach(product => {
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+            <td><img src="${product.image}" alt="${product.name}"></td>
+            <td>${product.name}</td>
+            <td>${product.description}</td>
+            <td>${product.quantity}</td>
+            <td>${product.price}€</td>
+            <td>
+                <a href="product-details.html?name=${encodeURIComponent(product.name)}&description=${encodeURIComponent(product.description)}&price=${product.price}&image=${encodeURIComponent(product.image)}" class="btn">Voir Plus</a>
+                <a href="https://wa.me/${whatsappNumber}?text=Bonjour,%20je%20souhaite%20commander%20le%20${encodeURIComponent(product.name)}%20au%20prix%20de%20${product.price}€.%20Description:%20${encodeURIComponent(product.description)}" class="btn" target="_blank">Commander</a>
+                <button class="btn delete-btn" data-name="${product.name}">Supprimer</button>
+            </td>
+
+        `;
+        productList.appendChild(tr);
+    });
+
+    // Sélectionner tous les boutons de suppression
+    const deleteButtons = document.querySelectorAll('.delete-btn');
+
+    deleteButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const productName = this.getAttribute('data-name');
+
+            // Filtrer la liste des produits pour retirer le produit à supprimer
+            const updatedProducts = products.filter(product => product.name !== productName);
+
+            // Mettre à jour le LocalStorage avec les produits restants
+            localStorage.setItem('products', JSON.stringify(updatedProducts));
+
+            // Recharger la page pour afficher la liste mise à jour
+            location.reload();
+        });
+    });
+
+</script>
+</body>
+</html>

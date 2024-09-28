@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOUTIQUE WEWATOO - Ajouter un Vêtement</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Ajouter un Nouveau Vêtement</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="clothing-list.html">Liste des Vêtements</a></li>
+                <li><a href="add-clothing.html">Ajouter un Vêtement</a></li>
+                <li><a href="about.html">Qui sommes-nous ?</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                &#9776;
+            </button>
+        </nav>
+    </header>
+    
+    <section>
+        <form action="#" method="post">
+            <label for="name">Nom du Vêtement:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="description">Description:</label>
+            <textarea id="description" name="description" required></textarea>
+
+            <label for="quantity">Quantité:</label>
+            <input type="number" id="quantity" name="quantity" required>
+
+            <label for="price">Prix:</label>
+            <input type="text" id="price" name="price" required>
+
+            <label for="image">Ajouter une Image:</label>
+            <input type="file" id="image" name="image" accept="image/*" required>
+
+            <button type="submit">Ajouter</button>
+        </form>
+    </section>
+    <br><br><br><br><br>
+    <footer>
+        <p>&copy; 2024 BOUTIQUE WEWATOO. Tous droits réservés.</p>
+    </footer>
+    <script src="nav.js"></script>
+    <!-- Ajouter ce script en bas de la page juste avant </body> -->
+<script>
+    document.querySelector('form').addEventListener('submit', function(event) {
+        event.preventDefault(); // Empêche le rechargement de la page
+
+        // Récupérer les données du formulaire
+        const name = document.getElementById('name').value;
+        const description = document.getElementById('description').value;
+        const quantity = document.getElementById('quantity').value;
+        const price = document.getElementById('price').value;
+        const image = document.getElementById('image').files[0];
+
+        // Convertir l'image en URL
+        const reader = new FileReader();
+        reader.onload = function() {
+            const imageUrl = reader.result;
+
+            // Créer un objet produit
+            const product = {
+                name,
+                description,
+                quantity,
+                price,
+                image: imageUrl
+            };
+
+            // Récupérer les produits existants depuis le Local Storage
+            const products = JSON.parse(localStorage.getItem('products')) || [];
+
+            // Ajouter le nouveau produit
+            products.push(product);
+
+            // Stocker les produits mis à jour dans le Local Storage
+            localStorage.setItem('products', JSON.stringify(products));
+
+            // Rediriger vers la page de liste des vêtements
+            window.location.href = 'clothing-list.html';
+        };
+
+        reader.readAsDataURL(image);
+    });
+</script>
+
+</body>
+</html>

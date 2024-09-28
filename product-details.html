@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Détails du Produit</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>Détail du Vêtement</h1>
+        <nav>
+            <ul id="menu">
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="clothing-list.html">Liste des Vêtements</a></li>
+                <li><a href="add-clothing.html">Ajouter un Vêtement</a></li>
+                <li><a href="about.html">Qui sommes-nous ?</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <button class="hamburger" id="hamburger">
+                &#9776;
+            </button>
+        </nav>
+    </header>
+
+    <section id="product-details">
+        <h2 id="product-name">Nom du Produit</h2>
+        <img id="product-image" src="" alt="Image du Produit">
+        <p id="product-description">Description du Produit</p>
+        <p id="product-price">Prix : 0€</p>
+        <a href="#" id="order-btn" class="btn">Commander sur WhatsApp</a>
+    </section>
+    <br><br><br>
+    <footer>
+        <p>&copy; 2024 BOUTIQUE WEWATOO. Tous droits réservés.</p>
+    </footer>
+    <script>
+        const hamburger = document.getElementById('hamburger');
+        const menu = document.getElementById('menu');
+    
+        hamburger.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+    </script>
+    <script>
+        // Récupérer les paramètres de l'URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const productName = urlParams.get('name');
+        const productDescription = urlParams.get('description');
+        const productPrice = urlParams.get('price');
+        const productImage = urlParams.get('image');
+
+        // Mettre à jour la page avec les détails du produit
+        document.getElementById('product-name').textContent = productName;
+        document.getElementById('product-description').textContent = productDescription;
+        document.getElementById('product-price').textContent = 'Prix : ' + productPrice + '€';
+        document.getElementById('product-image').src = productImage;
+
+        // Lien WhatsApp
+        const whatsappLink = `https://wa.me/NUMERO_WHATSAPP?text=Bonjour,%20je%20souhaite%20commander%20le%20produit%20${productName}%20au%20prix%20de%20${productPrice}€.`;
+        document.getElementById('order-btn').href = whatsappLink;
+    </script>
+</body>
+</html>
