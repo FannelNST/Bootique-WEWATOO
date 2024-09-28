@@ -1,0 +1,545 @@
+/* Styles généraux */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+    /* width: 100%; */
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 25px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+.hamburger {
+    display: none;
+}
+section {
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 1200px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* Styles intro page d'accueil */
+.intro {
+    text-align: center;
+    padding: 50px 20px;
+    color: #fff;
+    background: url('../images/background01.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+    z-index: 1;
+}
+
+.intro h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.intro p {
+    font-size: 1.2em;
+    margin-bottom: 30px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.buttons .btn {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.buttons .btn:hover {
+    background-color: #555;
+    transform: scale(1.1);
+}
+
+/* Styles pour les produits en vedette */
+.featured-products {
+    text-align: center;
+    padding: 50px 20px;
+    background-color: #f4f4f4;
+}
+
+.featured-products h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.product {
+    display: inline-block;
+    margin: 20px;
+    text-align: left;
+    border: 1px solid #ddd;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box; /* Assure que les dimensions incluent les bordures et le padding */
+}
+
+.product img {
+    width: 100%; /* S'ajuste à la largeur du conteneur */
+    max-height: 200px; /* Hauteur maximale pour les images */
+    object-fit: cover; /* Recadre l'image pour qu'elle remplisse le conteneur sans déformation */
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 15px;
+}
+
+.product h3 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.product p {
+    font-size: 1em;
+    margin-bottom: 10px;
+}
+
+.product .btn {
+    display: block;
+    margin: 5px 0;
+}
+
+/* Styles pour les informations de contact */
+.contact-info {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.contact-info h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.contact-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+
+.contact-info a {
+    color: #333;
+    text-decoration: none;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+}
+/* Carrousel Témoignages */
+.testimonial-carousel {
+    overflow: hidden;
+    max-width: 800px;
+    margin: 20px auto;
+    position: relative;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-carousel .testimonials {
+    display: flex;
+    transition: transform 0.5s ease;
+}
+
+.testimonial-carousel .testimonial {
+    min-width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+    text-align: center;
+    background-color: #e9ecef;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+}
+
+.testimonial-carousel .testimonial p {
+    font-style: italic;
+    color: #555;
+}
+/* Styles pour les tableaux */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    overflow-x: auto; /* Ajoute le défilement horizontal si nécessaire */
+    display: block; /* Assure que le tableau soit un bloc avec défilement */
+}
+
+table, th, td {
+    border: 1px solid #ddd;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f4f4f4;
+}
+
+td img {
+    max-width: 100px;
+    height: auto;
+}
+
+/* Styles pour les boutons dans le tableau */
+td .btn {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 2px;
+    background-color: #333;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 14px;
+}
+
+td .btn:hover {
+    background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    table {
+        font-size: 14px; /* Réduit la taille de la police sur les écrans plus petits */
+    }
+    th, td {
+        padding: 8px; /* Réduit le padding pour les petits écrans */
+    }
+}
+
+@media (max-width: 480px) {
+    table {
+        font-size: 12px; /* Réduit encore plus la taille de la police */
+    }
+    th, td {
+        padding: 6px; /* Réduit encore le padding */
+    }
+}
+
+/* Styles pour la section des détails du produit */
+#product-details {
+    max-width: 800px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+#product-details h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+    color: #2c3e50;
+}
+
+#product-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    transition: transform 0.3s ease;
+}
+
+#product-image:hover {
+    transform: scale(1.05);
+}
+
+#product-description {
+    font-size: 18px;
+    margin-bottom: 20px;
+    color: #7f8c8d;
+}
+
+#product-price {
+    font-size: 22px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: #e74c3c;
+}
+
+/* Bouton de commande */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 16px;
+    text-align: center;
+    justify-content: center;
+    color: #fff;
+    background-color: #27ae60;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    background-color: #2ecc71;
+    transform: translateY(-3px);
+}
+
+/* Styles pour la description de l'application */
+.app-description {
+    padding: 20px;
+    background-color: #f0f0f0;
+    text-align: center;
+}
+
+.app-description h2, .app-description h3 {
+    color: #333;
+}
+
+.app-description p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Styles pour la section des membres */
+.team {
+    padding: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.member {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin: 10px;
+    padding: 15px;
+    width: calc(33% - 40px); /* Ajuste la largeur pour l'espacement */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+}
+
+.member:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+}
+
+.member img {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.member h3 {
+    font-size: 1.5em;
+    color: #333;
+    margin: 10px 0;
+}
+
+.member p {
+    font-size: 1em;
+    color: #666;
+}
+
+/* Styles pour l'animation de défilement */
+body {
+    overflow-x: hidden; /* Éviter le défilement horizontal */
+}
+
+section {
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Styles pour les formulaires */
+form {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+form input, form textarea {
+    width: 97%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+form button {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #555;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    nav ul {
+        text-align: center;
+    }
+
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+
+    .product {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+
+    .member {
+        width: 100%;
+        max-width: 300px;
+        margin: 10px auto;
+    }
+}
+/* General styles (unchanged) */
+
+/* Hide the menu and display the hamburger icon on small screens */
+@media (max-width: 768px) {
+    nav ul {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: #333;
+        text-align: left;
+    }
+    
+    nav ul li {
+        display: block;
+        margin: 0;
+        padding: 5px;
+        border-bottom: 2px solid #444;
+    }
+
+    nav ul li a {
+        display: block;
+        padding: 10px;
+    }
+
+    /* Hamburger menu button */
+    .hamburger {
+        display: block;
+        background: none;
+        border: none;
+        font-size: 30px;
+        color: #fff;
+        cursor: pointer;
+        margin-top: -30px;
+        position: relative;
+        float: right;
+    }
+}
+
+/* Show the menu when it's active */
+nav ul.active {
+    display: flex;
+    animation: slideDown 0.5s ease-in-out;
+}
+
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (max-width: 480px) {
+    .intro h2 {
+        font-size: 2em;
+    }
+
+    .intro p {
+        font-size: 1em;
+    }
+
+    .featured-products h2 {
+        font-size: 1.5em;
+    }
+
+    .product {
+        width: 100%;
+        margin: 10px 0;
+    }
+
+    .contact-info p {
+        font-size: 1em;
+    }
+
+    form input, form textarea {
+        width: 95%;
+    }
+
+    form button {
+        width: 100%;
+    }
+}
